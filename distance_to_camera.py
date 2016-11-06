@@ -28,17 +28,15 @@ def check_image(image_path):
 			instruction = "stop"
 
 	# Display the blob until you click on the left side of the picture.
-	display = SimpleCV.Display()
-	while display.isNotDone():
-		image.show()
-		if display.mouseLeft:
-			break
+	#display = SimpleCV.Display()
+	#while display.isNotDone():
+		#image.show()
+		##\#if display.mouseLeft:
+			#break
 
 	return instruction
 
-print sys.argv[1]
-instruction = check_image(sys.argv[1])
-print instruction
+
 
 
 # def check_width(image, blob):
