@@ -4,11 +4,11 @@ import sys
 from SimpleCV import Image
 
 def check_blob_in_direct_path(image_path):
-	#Find file by path and import.  File currently resides in same directory.
+
 	image = Image(image_path)
 	# grey = image.grayscale()
 
-	instruction = "go"
+	instruction = "forward"
 	array_bounds_possible_widths = [image.width / 4, image.width / 4 * 3]
 	shapes_pic_attributes = image.size()
 
