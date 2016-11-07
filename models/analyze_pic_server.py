@@ -9,7 +9,7 @@ count = 0
 while (count < 20):
   get_image()
   print "got image"
-  check_blob_in_direct_path(os.getcwd() + "/images/greg.jpg")
+  instruction = check_blob_in_direct_path(os.getcwd() + "/images/greg.jpg")
   print "analyzed image"
 
   count += 1
