@@ -1,4 +1,3 @@
-# import analyze
 from analyze import check_blob_in_direct_path
 import os
 import sys
