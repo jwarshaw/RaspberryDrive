@@ -14,7 +14,8 @@ def createPiReceiver():
 			if transfer == ['']: break	
 			print transfer
 			inputParser(transfer[0].strip(),float(transfer[1]),new_picar)
-	
+			clientsocket.send("true")	
+
 def inputParser(command,number,car):
 	print 'going ' + command + ' for ' + str(number) +' seconds'
 	if    command == "forward":
