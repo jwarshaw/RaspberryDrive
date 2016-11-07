@@ -10,8 +10,6 @@ def createPiReceiver():
         	(clientsocket, address) = serversocket.accept()
 		while(1):
         		transfer = clientsocket.recv(1024).split(';')	
-        		print transfer[0]
-			print transfer[1]
 			inputParser(transfer[0].strip(),float(transfer[1]),new_picar)
 	
 def inputParser(command,number,car):
