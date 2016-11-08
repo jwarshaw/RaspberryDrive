@@ -10,37 +10,40 @@ from start_camera import start_camera
 from start_server import start_server
 import threading
 
-
 #Start-all
   #start the camera taking pictures on camera pi
   #start the server listening on contr pi
   #start the server connection on this current server
-# threads = []
-# camera_thread = threading.Thread(target=start_camera)
-# threads.append(camera_thread)
-# camera_thread.start()
-# server_thread = threading.Thread(target=start_server)
-# server_thread.start()
-print "new connection?"
-# start_server()
+threads = []
+server_thread = threading.Thread(target=start_server)
+threads.append(server_thread)
+server_thread.start()
+#Sleep for testing
+sleep(2)
+camera_thread = threading.Thread(target=start_camera)
+threads.append(camera_thread)
+camera_thread.start()
+# Sleep to make sure server connects
+sleep(5)
 s = new_connection()
-print "connected??"
-# server_thread.exit()
+
 #Run-All.  X times do
-    #retrieve image.  mage, check if its in path.
+    #retrieve image.  #Blog Detection
     #send instruction over server
 count = 0
-while (count < 100):
+while (count < 20):
   get_image()
   if valid_image(os.getcwd() + "/images/gregTest.jpg"):
     instruction = check_blob_in_direct_path(os.getcwd() + "/images/gregTest.jpg")
     send_command(s, instruction, "0.5")
+    count += 1
     receive_confirmation(s)
     count += 1
 
-#End-all
-  #Stop the camera taking pictures on the camera pi
-  #close the server connection
-  #Kill the server listening process
-
+# #End-all
+#   #Stop the camera taking pictures on the camera pi -- still needs to be implemented
+#   #close the server connection
+s.send("quit")
+#   #Kill the server listening process
 s.close()
+exit()
