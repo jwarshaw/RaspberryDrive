@@ -3,6 +3,8 @@ import sys
 from time import sleep
 sys.path.insert(0, os.getcwd())
 from models import analyzeLine
+from models import runAnalyzeLine
+from models.runAnalyzeLine import runAnalyzeLines
 # from models.analyze import findBlockingBlobs
 from models.analyzeLine import findBlockingBlobs
 from get_images_from_pi import get_image, valid_image
@@ -10,8 +12,6 @@ from connect import new_connection, send_command, receive_confirmation,send_end_
 from start_camera import start_camera
 from start_server import start_server
 import threading
-
-
 
 #Start-all
 threads = []
@@ -37,14 +37,15 @@ count = 0
 while (count < 20):
   instruction = "forward"
   get_image()
-  if valid_image(os.getcwd() + "/images/gregTest.jpg"):
-    in_way = check_blob_in_direct_path(os.getcwd() + "/images/gregTest.jpg")
+  if valid_image(os.getcwd() + "/gregTest.jpg"):
+    in_way = runAnalyzeLines(os.getcwd() + "/gregTest.jpg")
     if (in_way == True):
       instruction = "stop"
     send_command(s, instruction, "0.5")
     receive_confirmation(s)
-    count += 1
-    sleep(0.5)
+    # sleep(0.25)
+    print instruction
+  count += 1
 
 # #End-all
 #   #Stop the camera taking pictures on the camera pi -- still needs to be implemented

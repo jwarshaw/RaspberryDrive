@@ -5,7 +5,7 @@ import time
 
 def findBlockingBlobs(img,blobs):
 	for blob in blobs:
-		if blockingBlob(img,blob)
+		if blockingBlob(img,blob):
 			return True
 		return False
 
