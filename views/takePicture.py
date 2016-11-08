@@ -2,6 +2,7 @@ import picamera as p
 import os
 import time
 
+print "in take picture"
 os.chdir('/home/pi/Desktop')
 
 cam = p.PiCamera()
@@ -15,3 +16,5 @@ while x < 50:
 	time.sleep(.25)
 	#oc.rename('gregTemp.jpg', 'greg.jpg')
 	x +=1
+
+exit()
