@@ -19,8 +19,8 @@ import threading
 # camera_thread = threading.Thread(target=start_camera)
 # threads.append(camera_thread)
 # camera_thread.start()
-server_thread = threading.Thread(target=start_server)
-server_thread.start()
+# server_thread = threading.Thread(target=start_server)
+# server_thread.start()
 print "new connection?"
 # start_server()
 s = new_connection()
