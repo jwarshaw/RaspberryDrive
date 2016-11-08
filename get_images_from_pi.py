@@ -1,5 +1,4 @@
 import os
-import time
 from PIL import Image
 
 def get_image_x_times(times):
@@ -11,10 +10,10 @@ def get_image_x_times(times):
 
 def get_image():
 	os.system('scp "%s:%s" "%s" "%s"' % ('pi@192.168.2.5', 'Desktop/gregTest.jpg', 'gregTest.jpg', os.getcwd() + '/images') )
-		#if on a new computer and the pi address isn't connecting right away, need to create a key.  Use the following website to do so
-		#https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md
-		#replace Desktop/greg with the path.
-		#replace greg with the file name
+	#if on a new computer and the pi address isn't connecting right away, need to create a key.  Use the following website to do so
+	#https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md
+	#replace Desktop/greg with the path.
+	#replace greg with the file name
 
 def valid_image(path):
 	try:

@@ -4,7 +4,7 @@ import os
 import sys
 from time import sleep
 sys.path.insert(0, os.getcwd())
-from get_images_from_pi import get_image, get_image_x_times, valid_image
+from get_images_from_pi import get_image, valid_image
 from connect import new_connection, send_command, receive_confirmation
 
 #controller action
