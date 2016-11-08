@@ -7,6 +7,7 @@ from models.analyze import check_blob_in_direct_path
 from get_images_from_pi import get_image, valid_image
 from connect import new_connection, send_command, receive_confirmation
 from start_camera import start_camera
+from start_server import start_server
 import threading
 
 
@@ -14,13 +15,17 @@ import threading
   #start the camera taking pictures on camera pi
   #start the server listening on contr pi
   #start the server connection on this current server
-threads = []
-t = threading.Thread(target=start_camera)
-threads.append(t)
-t.start()
-
+# threads = []
+# camera_thread = threading.Thread(target=start_camera)
+# threads.append(camera_thread)
+# camera_thread.start()
+server_thread = threading.Thread(target=start_server)
+server_thread.start()
+print "new connection?"
+# start_server()
 s = new_connection()
-
+print "connected??"
+# server_thread.exit()
 #Run-All.  X times do
     #retrieve image.  mage, check if its in path.
     #send instruction over server
