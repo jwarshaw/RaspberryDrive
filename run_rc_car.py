@@ -60,9 +60,4 @@ class PiCar(object):
 
 
 picar = PiCar()
-picar.go_forward(1)
-picar.go_forward_right(1)
-picar.go_backward_left(1)
-picar.go_forward(2)
-picar.go_backward(2)
-picar.go_forward_right(5)
+
