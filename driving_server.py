@@ -25,7 +25,7 @@ def createPiReceiver():
 				
 
 def inputParser(command,number,car):
-	print 'executing ' + command + ' for ' + str(number) +' seconds':
+	print 'executing ' + command + ' for ' + str(number) +' seconds'
 	if   command == "forward":
 		car.go_forward(number)
 	elif command == "backward":
