@@ -4,8 +4,8 @@ import os
 import sys
 from time import sleep
 sys.path.insert(0, os.getcwd())
-from get_images_from_pi import get_image, get_image_x_times
-from connect import new_connection, send_command
+from get_images_from_pi import get_image, get_image_x_times, valid_image
+from connect import new_connection, send_command, receive_confirmation
 
 #controller action
 #start a server
@@ -16,11 +16,13 @@ from connect import new_connection, send_command
 
 count = 0
 s = new_connection()
-while (count < 10):
+while (count < 100):
   get_image()
-  instruction = check_blob_in_direct_path(os.getcwd() + "/images/greg.jpg")
-  send_command(s, instruction, "1")
-  count += 1
-  sleep(1)
+  if valid_image(os.getcwd() + "/images/gregTest.jpg"):
+    instruction = check_blob_in_direct_path(os.getcwd() + "/images/gregTest.jpg")
+    send_command(s, instruction, "0.5")
+    receive_confirmation(s)
+    count += 1
+    # sleep()
 
 s.close()

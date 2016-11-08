@@ -10,6 +10,10 @@ def new_connection():
 def send_command(connection,command,time):
     connection.send('' + command + ' ; ' + time)
 
+def receive_confirmation(connection):
+  received = connection.recv(20)
+  return received;
+
 # example:
 # con = new_conntection
 # send_command(con,"forward",0.5)
