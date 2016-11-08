@@ -10,12 +10,12 @@ def findBlockingBlobs(img,blobs):
 				if blockingBlob(img,blob):
 					return True
 		return False
-				
+
 def blockingBlob(img,blob):
 	if heightBelowThreshold(img,blob):
 			if lengthSufficientToBlock(img,blob):
 				return True
-		
+
 
 def heightBelowThreshold(img,blob):
 		print blob.maxY()
