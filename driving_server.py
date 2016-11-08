@@ -25,23 +25,7 @@ def createPiReceiver():
 				
 
 def inputParser(command,number,car):
-	print 'executing ' + command + ' for ' + str(number) +' seconds'
-	serversocket = socket(AF_INET, SOCK_STREAM)
-	new_picar = picar.PiCar()
-	serversocket.bind(('',9000))
-  serversocket.listen(5)
-  while(1):
-    (clientsocket, address) = serversocket.accept()
-      while(1):
-        transfer = clientsocket.recv(20).split(';')
-    		if not transfer: break
-    		if transfer == ['']: break
-    		print transfer
-    		inputParser(transfer[0].strip(),float(transfer[1]),new_picar)
-    		clientsocket.send("true")
-
-def inputParser(command,number,car):
-	print 'going ' + command + ' for ' + str(number) +' seconds'
+	print 'executing ' + command + ' for ' + str(number) +' seconds':
 	if   command == "forward":
 		car.go_forward(number)
 	elif command == "backward":
