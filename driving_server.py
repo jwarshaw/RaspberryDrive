@@ -1,5 +1,5 @@
 from socket import *
-import run_py_car as picar
+import run_rc_car as picar
 
 def createPiReceiver():
     	serversocket = socket(AF_INET, SOCK_STREAM)
