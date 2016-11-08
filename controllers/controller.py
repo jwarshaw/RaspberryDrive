@@ -7,13 +7,18 @@ from models.analyze import check_blob_in_direct_path
 from get_images_from_pi import get_image, valid_image
 from connect import new_connection, send_command, receive_confirmation
 from start_camera import start_camera
+import threading
 
 
 #Start-all
   #start the camera taking pictures on camera pi
   #start the server listening on contr pi
   #start the server connection on this current server
-start_camera()
+threads = []
+t = threading.Thread(target=start_camera)
+threads.append(t)
+t.start()
+
 s = new_connection()
 
 #Run-All.  X times do
@@ -32,4 +37,5 @@ while (count < 100):
   #Stop the camera taking pictures on the camera pi
   #close the server connection
   #Kill the server listening process
+
 s.close()
