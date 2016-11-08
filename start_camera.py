@@ -1,5 +1,6 @@
 import os
 
 def start_camera():
-  os.system('"%s:%s" "%s" "%s"' % ('pi@19 2.168.2.5', 'Desktop/gregTest.jpg', 'gregTest.jpg', os.getcwd() + '/images') )
+  os.system('ssh "%s" "%s" "%s"' % ('pi@192.168.2.5', 'python', 'RaspberryDrive/views/takePicture.py') )
 
+start_camera()
