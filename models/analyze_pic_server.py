@@ -9,7 +9,7 @@ from connect import new_connection, send_command, receive_confirmation
 
 #controller action
 #start a server
-#10 times do:
+#x times do:
   #get image, check if its in path.
   #send instruction over server
   #sleep, do it again
@@ -23,6 +23,5 @@ while (count < 100):
     send_command(s, instruction, "0.5")
     receive_confirmation(s)
     count += 1
-    # sleep()
 
 s.close()
