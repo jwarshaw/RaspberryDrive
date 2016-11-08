@@ -37,7 +37,7 @@ def inputParser(command,number,car):
 	elif command == "backward right":
 		car.go_backward_right(number)
 	elif command == "backward left":
-		car.go_backward_left(number)	
+		car.go_bacfkward_left(number)	
 	else: 
 		car.stop()
 	
