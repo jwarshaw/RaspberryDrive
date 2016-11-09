@@ -22,6 +22,7 @@ def start_camera_thread():
 	camera_thread.start()
 	return;
 
+
 #Start-all
 #start the server listening on contr pi
 start_server_thread()
@@ -37,7 +38,7 @@ count = 0
 while (count < 20):
   instruction = "forward"
   #retrieve image.
-  get_image()
+  get_image(count)
   if valid_image(os.getcwd() + "/gregTest.jpg"):
   	#Blog Detection
     in_way = runAnalyzeLines(os.getcwd() + "/gregTest.jpg")
