@@ -48,13 +48,7 @@ def run(server):
     if valid_image(os.getcwd() + "/gregTest.jpg"):
       #Blog Detection
       analyzed_image = AnalyzeImage(os.getcwd() + "/gregTest.jpg")
-      command = analyzed_image.runBlobFinder()
-      if (in_way == True):
-        instruction = "stop"
-      #send instruction over server
-      send_command(server, instruction, "0.5")
-      #confirmation that instruction was received
-      print instruction
+      analyzed_image.runBlobFinder()
     count += 1
 
 server = start_all()
