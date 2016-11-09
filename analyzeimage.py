@@ -7,9 +7,9 @@ from PIL import Image
 
 class AnalyzeImage(object):
 
-  def __init__(self, image,connection):
+  def __init__(self, image_path,connection):
     self.default_command = "stop"
-    self.scvImg = SimpleCV.Image(image)
+    self.scvImg = SimpleCV.Image(image_path)
     self.segmented_black_white = self.scvImg.stretch(160,161)
     self.black_white_blobs = self.segmented_black_white.findBlobs(minsize=100)
     self.car = CarManeuvers(connection)
@@ -39,9 +39,9 @@ class AnalyzeImage(object):
       if analyzed_blob.isBlobBlocking():
         print "true"
         if analyzed_blob.isBlobBlockingMoreRight():
-          self.car.back_up_and_then_drive_left()
+          self.car.back_up_then_left()
         else:
-          self.car.back_up_and_then_drive_right()
+          self.car.back_up_then_right()
         return
 
       elif analyzed_blob.isBlobDetectedOnRight():

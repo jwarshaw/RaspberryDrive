@@ -24,7 +24,7 @@ def detect_stop_sign(image):
     return True #means there is an obstruction
   return False
 
-image = Image('images/0.jpg')
+image = Imageps('images/0.jpg')
 x = 5
 while (x < 7):
   print x
