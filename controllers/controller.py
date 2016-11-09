@@ -3,7 +3,7 @@ import sys
 from time import sleep
 sys.path.insert(0, os.getcwd())
 import analyzeLine
-import runAnalyzeLine
+# import runAnalyzeLine
 from runAnalyzeLine import runAnalyzeLines
 from analyzeLine import findBlockingBlobs
 from get_images_from_pi import get_image, valid_image
@@ -15,19 +15,17 @@ import threading
 def start_server_thread():
 	server_thread = threading.Thread(target=start_server)
 	server_thread.start()
-	return;
 
 def start_camera_thread():
 	camera_thread = threading.Thread(target=start_camera)
 	camera_thread.start()
-	return;
 
 def start_all():
   start_server_thread()
   start_camera_thread()
   sleep(7)
   s = new_connection()
-  return s;
+  return s
   #start the server listening on contr pi
   #start the camera taking pictures on camera pi
   # Sleep to make sure server connects
@@ -36,7 +34,6 @@ def start_all():
 def end_all(server):
   send_end_connection(server)
   server.close()
-  return;
   #End-all
   #Camera exits automatically automatically
   #Close the Server Connection on the Pi-Controller End
