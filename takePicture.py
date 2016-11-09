@@ -10,8 +10,10 @@ cam.hflip = True
 cam.vflip = True
 
 x = 0
-while x < 15:
-	img = cam.capture('gregTest.jpg')
+while x < 50:
+	img = cam.capture('tempGregTest.jpg')
+	os.unlink('gregTest.jpg')
+	os.rename('tempGregTest.jpg','gregTest.jpg')
 	time.sleep(.25)
 	x +=1
 
