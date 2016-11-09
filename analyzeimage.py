@@ -10,7 +10,7 @@ class AnalyzeImage(object):
   def __init__(self, image_path,connection):
     self.default_command = "stop"
     self.scvImg = SimpleCV.Image(image_path)
-    self.segmented_black_white = self.scvImg.stretch(160,161)
+    self.segmented_black_white = self.scvImg.stretch(180,181)
     self.black_white_blobs = self.segmented_black_white.findBlobs(minsize=100)
     self.car = CarManeuvers(connection)
 
