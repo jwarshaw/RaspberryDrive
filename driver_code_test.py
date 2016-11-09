@@ -17,23 +17,19 @@ def take_50_pictures():
 
 def detect_stop_sign(image):
   reds = image.hueDistance(color=scv.Color.RED)
-  stretch = reds.stretch(20,21)
-  invert = stretch.invert()
-  blobs = invert.findBlobs(minsize=2000)
+  stretched_image = reds.stretch(20,21)
+  inverted_image = stretched_image.invert()
+  blobs = inverted_image.findBlobs(minsize=3500)
   if blobs:
-    for blob in blobs:
-      print blob.area()
-      blob.draw(color=(0, 128, 0))
-  invert.show()
-  invert.show()
-  time.sleep(3)
+    return True #means there is an obstruction
+  return False
 
 image = Image('images/0.jpg')
-x = 0
-while (x < 40):
-  image = Image('images/'+ str(x) + '.jpg')
-  detect_stop_sign(image)
+x = 5
+while (x < 7):
   print x
+  image = Image('images/stop'+ str(x) + '.jpg')
+  detect_stop_sign(image)
   x +=1
 
 exit()
