@@ -3,6 +3,7 @@ import cv2
 import time
 from analyzeblob import *
 from car_maneuvers import *
+from PIL import Image
 
 class AnalyzeImage(object):
 
@@ -22,12 +23,33 @@ class AnalyzeImage(object):
 	# print blob
 
   def analyzeBlobs(self):
+    blobs = self.scvImg.findBlobs(minsize = 100)
+    # if blobs:
+    #   for blob in blobs:
+    #     if blob.area() > 100:
+    #       blob.draw(color=(128,0,0))
+    #   self.scvImg.show()
+    #   self.scvImg.show()
+    #   time.sleep(2)
     #check if blocked
     for blob in self.black_white_blobs:
+      print blob
       analyzed_blob = AnalyzeBlob(self.scvImg,blob)
+
       if analyzed_blob.isBlobBlocking():
-        #improve logic here
-        self.car.back_up_and_then_drive_right()
+        print "true"
+        if analyzed_blob.isBlobBlockingMoreRight():
+          self.car.back_up_and_then_drive_left()
+        else:
+          self.car.back_up_and_then_drive_right()
+        return
+
+      elif analyzed_blob.isBlobDetectedOnRight():
+        # if analyzed_blob.blockedOnRight():
+        self.car.left()
+        return
+      elif analyzed_blob.isBlobDetectedOnLeft():
+        self.car.right()
         return
     #otherwise go forward
     self.car.forward()
