@@ -2,10 +2,10 @@ import os
 import sys
 from time import sleep
 sys.path.insert(0, os.getcwd())
-import analyzeLine
-import runAnalyzeLine
-from runAnalyzeLine import runAnalyzeLines
-from analyzeLine import findBlockingBlobs
+import AnalyzeBlob
+import AnalyzeImage
+from AnalyzeImage import *
+from AnalyzeBlob import *
 from get_images_from_pi import get_image, valid_image
 from connect import new_connection, send_command, receive_confirmation,send_end_connection
 from start_camera import start_camera
@@ -47,7 +47,8 @@ def run(server):
     get_image(count)
     if valid_image(os.getcwd() + "/gregTest.jpg"):
       #Blog Detection
-      in_way = runAnalyzeLines(os.getcwd() + "/gregTest.jpg")
+      analyzed_image = AnalyzeImage(os.getcwd() + "/gregTest.jpg")
+      command = analyzed_image.runBlobFinder()
       if (in_way == True):
         instruction = "stop"
       #send instruction over server
