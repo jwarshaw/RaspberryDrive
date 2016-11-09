@@ -1,28 +1,39 @@
-import SimpleCV
+import SimpleCV as scv
 from SimpleCV import Image
 import cv2
 import time
 from start_camera import start_camera
 import threading
 
-camera_thread = threading.Thread(target=start_camera)
-camera_thread.start()
-from get_images_from_pi import get_image, valid_image
+# camera_thread = threading.Thread(target=start_camera)
+# camera_thread.start()
+# from get_images_from_pi import get_image, valid_image
+# time.sleep(2)
+# count = 0
+# while (count < 50):
+#   get_image(count)
+#   count += 1
 
-count = 0
-while (count < 10):
-  get_image(count)
-  count += 1
+# exit()
 
-exit()
+image = Image('images/stop')
 
-# image = Image('images/9.jpg')
-# # p = image.getPalette()
-# # rgb = PIL.ImageColor.getrgb("blue")
-# # print rgb
-# blobs = image.findBlobs(threshval=(0,0,255))
-# # blobs = image.findBlobsFromPalette( (p[0],p[1],p[2]) )
-# # blobs = image.findBlobsFromHueHistogram((0,0,50,50))
+image.show()
+image.show()
+time.sleep(2)
+
+reds = image.hueDistance(color=scv.Color.RED)
+reds.show()
+reds.show()
+time.sleep(2)
+
+stretch = reds.stretch(20,21)
+stretch.show()
+stretch.show()
+time.sleep(3)
+
+
+# blobs = image.findBlobs()
 # if blobs:
 #   for blob in blobs:
 #     print "got a blob"
