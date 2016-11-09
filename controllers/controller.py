@@ -3,7 +3,7 @@ import sys
 from time import sleep
 sys.path.insert(0, os.getcwd())
 import analyzeLine
-# import runAnalyzeLine
+import runAnalyzeLine
 from runAnalyzeLine import runAnalyzeLines
 from analyzeLine import findBlockingBlobs
 from get_images_from_pi import get_image, valid_image
@@ -56,7 +56,6 @@ def run(server):
       receive_confirmation(server)
       print instruction
     count += 1
-  return;
 
 server = start_all()
 run(server)
