@@ -2,11 +2,11 @@ import os
 import sys
 from time import sleep
 sys.path.insert(0, os.getcwd())
-from models import analyzeLine
-from models import runAnalyzeLine
-from models.runAnalyzeLine import runAnalyzeLines
+import analyzeLine
+import runAnalyzeLine
+from runAnalyzeLine import runAnalyzeLines
 # from models.analyze import findBlockingBlobs
-from models.analyzeLine import findBlockingBlobs
+from analyzeLine import findBlockingBlobs
 from get_images_from_pi import get_image, valid_image
 from connect import new_connection, send_command, receive_confirmation,send_end_connection
 from start_camera import start_camera
