@@ -9,6 +9,7 @@ def new_connection():
 
 def send_command(connection,command,time):
     connection.send('' + command + ' ; ' + time)
+    return receive_confirmation(connection)
 
 def receive_confirmation(connection):
   received = connection.recv(20)
