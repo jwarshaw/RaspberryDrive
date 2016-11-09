@@ -2,10 +2,10 @@ import os
 import sys
 from time import sleep
 sys.path.insert(0, os.getcwd())
-import AnalyzeBlob
-import AnalyzeImage
-from AnalyzeImage import *
-from AnalyzeBlob import *
+import analyzeblob
+import analyzeimage
+from analyzeimage import *
+from analyzeblob import *
 from get_images_from_pi import get_image, valid_image
 from connect import new_connection, send_command, receive_confirmation,send_end_connection
 from start_camera import start_camera
@@ -48,14 +48,7 @@ def run(server):
     if valid_image(os.getcwd() + "/gregTest.jpg"):
       #Blog Detection
       analyzed_image = AnalyzeImage(os.getcwd() + "/gregTest.jpg")
-      command = analyzed_image.runBlobFinder()
-      if (in_way == True):
-        instruction = "stop"
-      #send instruction over server
-      send_command(server, instruction, "0.5")
-      #confirmation that instruction was received
-      receive_confirmation(server)
-      print instruction
+      analyzed_image.runBlobFinder()
     count += 1
 
 server = start_all()
