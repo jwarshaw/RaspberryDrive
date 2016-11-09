@@ -24,12 +24,20 @@ def detect_stop_sign(image):
     return True #means there is an obstruction
   return False
 
-image = Imageps('images/0.jpg')
-x = 5
-while (x < 7):
+# image = Image('images/0.jpg')
+x = 0
+while (x < 15):
   print x
-  image = Image('images/stop'+ str(x) + '.jpg')
-  detect_stop_sign(image)
+  image = Image('images/'+ str(x) + '.jpg')
+  segmented_black_white = image.stretch(180,181)
+  black_white_blobs = segmented_black_white.findBlobs(minsize=100)
+  print black_white_blobs
+  if black_white_blobs:
+      for blob in black_white_blobs:
+          blob.draw(color=(128,0,0))
+  segmented_black_white.show()
+  segmented_black_white.show()
+  time.sleep(3)
   x +=1
 
 exit()
