@@ -5,7 +5,7 @@ import time
 class AnalyzeBlob(object):
 
 	def __init__(self,img,blob):
-		self.vertical_boundary = 0.3
+		self.vertical_boundary = 0.7
 		self.width_boundary = 0.4
 		self.img = img
 		self.blob = blob
@@ -34,10 +34,10 @@ class AnalyzeBlob(object):
 
 	def __anglingFromLeft(self):
 		print self.blob.angle()
-		return self.blob.angle() > 90 - self.angle_to_turn
+		return self.blob.angle() > -1* self.angle_to_turn
 
 	def __largeObjectStartingNearLeft(self):
-		return (self.blob.maxX() < self.img.size()[0] * 0.05) and (self.blob.width() > self.img.size()[0] * 0.8) and (self.blob.maxY() > self.img.size()[1] * 0.3)
+		return (self.blob.minX() < self.img.size()[0] * 0.05) and (self.blob.width() > self.img.size()[0] * 0.5) and (self.blob.maxY() > self.img.size()[1] * 0.3)
 
 	def __heightBelowThreshold(self):
 		return self.blob.maxY() > self.img.size()[1] * self.vertical_boundary

@@ -41,7 +41,8 @@ def end_all(server):
 
 def run(server):
   count = 0
-  while (count < 20):
+  while (count < 40):
+    print count
     instruction = "forward"
     #retrieve image.
     get_image(count)
