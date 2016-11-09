@@ -5,43 +5,38 @@ import time
 from start_camera import start_camera
 import threading
 
-# camera_thread = threading.Thread(target=start_camera)
-# camera_thread.start()
-# from get_images_from_pi import get_image, valid_image
-# time.sleep(2)
-# count = 0
-# while (count < 50):
-#   get_image(count)
-#   count += 1
+def take_50_pictures():
+  camera_thread = threading.Thread(target=start_camera)
+  camera_thread.start()
+  from get_images_from_pi import get_image, valid_image
+  time.sleep(2)
+  count = 0
+  while (count < 50):
+    get_image(count)
+    count += 1
 
-# exit()
+def detect_stop_sign(image):
+  reds = image.hueDistance(color=scv.Color.RED)
+  stretch = reds.stretch(20,21)
+  invert = stretch.invert()
+  blobs = invert.findBlobs(minsize=2000)
+  if blobs:
+    for blob in blobs:
+      print blob.area()
+      blob.draw(color=(0, 128, 0))
+  invert.show()
+  invert.show()
+  time.sleep(3)
 
-image = Image('images/stop')
+image = Image('images/0.jpg')
+x = 0
+while (x < 40):
+  image = Image('images/'+ str(x) + '.jpg')
+  detect_stop_sign(image)
+  print x
+  x +=1
 
-image.show()
-image.show()
-time.sleep(2)
-
-reds = image.hueDistance(color=scv.Color.RED)
-reds.show()
-reds.show()
-time.sleep(2)
-
-stretch = reds.stretch(20,21)
-stretch.show()
-stretch.show()
-time.sleep(3)
-
-
-# blobs = image.findBlobs()
-# if blobs:
-#   for blob in blobs:
-#     print "got a blob"
-#     blob.draw(color=(0, 128, 0))
-# image.show()
-# image.show()
-# time.sleep(4)
-
+exit()
 
 
 
