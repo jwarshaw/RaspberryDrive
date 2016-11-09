@@ -56,9 +56,9 @@ while (count < 20):
 
 #End-all
 #Camera stops automatically
-#   #close the server connection
+#close the server connection on the pi-controller end
 send_end_connection(s)
-#   #Kill the server listening process
+#Kill the server listening process
 s.close()
 #exit out of controller
 exit()
