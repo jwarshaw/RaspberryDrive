@@ -45,9 +45,10 @@ def run(server):
     instruction = "forward"
     #retrieve image.
     get_image(count)
-    if valid_image(os.getcwd() + "/gregTest.jpg"):
+    image_path = os.getcwd() + "/images/" + str(count) + ".jpg"
+    if valid_image(image_path):
       #Blog Detection
-      analyzed_image = AnalyzeImage(os.getcwd() + "/gregTest.jpg")
+      analyzed_image = AnalyzeImage(image_path, server)
       analyzed_image.runBlobFinder()
     count += 1
 
