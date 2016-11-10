@@ -51,7 +51,7 @@ def run(server):
       #Blog Detection
       analyzed_image = AnalyzeImage(image_path, server)
       analyzed_image.runBlobFinder()
-      sleep(0.4)
+      sleep(0.45)
     count += 1
 
 server = start_all()
