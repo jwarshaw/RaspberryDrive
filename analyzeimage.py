@@ -43,20 +43,25 @@ class AnalyzeImage(object):
       analyzed_blob = AnalyzeBlob(self.scvImg,blob)
 
       if analyzed_blob.isBlobBlocking():
-        print "true"
+        print "Blob blocks path"
         if analyzed_blob.isBlobBlockingMoreRight():
+          print "On Right"
           self.car.wheels_right_back_up()
         else:
+          print "On Left"
           self.car.wheels_left_back_up()
         return
 
       elif analyzed_blob.isBlobDetectedOnRight():
+        print "Small blob on right"
         # if analyzed_blob.blockedOnRight():
         self.car.left()
         return
       elif analyzed_blob.isBlobDetectedOnLeft():
+        print "Small blob on left"
         self.car.right()
         return
+    print "No Blobs in way"
     #otherwise go forward
     self.car.forward()
 
