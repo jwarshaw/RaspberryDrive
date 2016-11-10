@@ -27,7 +27,7 @@ class AnalyzeBlob(object):
 		return self.blob.angle() < self.angle_to_turn
 
 	def __largeObjectStartingNearRight(self):
-		return (self.blob.maxX() > self.img.size()[0] * 0.95) and (self.blob.width() > self.img.size()[0] * 0.5) and (self.blob.maxY() < self.img.size()[1] * 0.8)
+		return (self.blob.maxX() > self.img.size()[0] * 0.80) and (self.blob.width() > self.img.size()[0] * 0.5) and (self.blob.maxY() < self.img.size()[1] * 0.8)
 
 	def isBlobBlockingMoreRight(self):
 		return self.blob.angle() > 0
@@ -37,7 +37,7 @@ class AnalyzeBlob(object):
 		return self.blob.angle() > -1* self.angle_to_turn
 
 	def __largeObjectStartingNearLeft(self):
-		return (self.blob.minX() < self.img.size()[0] * 0.05) and (self.blob.width() > self.img.size()[0] * 0.5) and (self.blob.maxY() > self.img.size()[1] * 0.2)
+		return (self.blob.minX() < self.img.size()[0] * 0.20) and (self.blob.width() > self.img.size()[0] * 0.5) and (self.blob.maxY() > self.img.size()[1] * 0.2)
 
 	def __heightBelowThreshold(self):
 		return self.blob.maxY() > self.img.size()[1] * self.vertical_boundary
