@@ -10,9 +10,15 @@ class AnalyzeImage(object):
   def __init__(self, image_path,connection):
     self.default_command = "stop"
     self.scvImg = SimpleCV.Image(image_path)
+    #adding in stop sign logic to check if speed slows down.
+    #reds = self.scImg.hueDistance(color=scv.Color.RED)
+    #red_stretched_image = reds.stretch(20,21)
+    #red_inverted_image = red_stretched_image.invert()
+    # self.red_blobs = red_inverted_image.findBlobs(minsize=3500)
     self.segmented_black_white = self.scvImg.stretch(180,181)
     self.black_white_blobs = self.segmented_black_white.findBlobs(minsize=100)
     self.car = CarManeuvers(connection)
+
 
   def runBlobFinder(self):
     if (self.black_white_blobs and (len(self.black_white_blobs) > 0)):
