@@ -41,7 +41,7 @@ def end_all(server):
 
 def run(server):
   count = 0
-  while (count < 15):
+  while (count < 40):
     print count
     #retrieve image.
     get_image(count)

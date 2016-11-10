@@ -23,8 +23,6 @@ class CarManeuvers(object):
     send_command(self.connection, "backward", "0.2")
     sleep(1)
     send_command(self.connection, "wheels right", "0.2")
-    # send_command(self.connection, "backward", "0.6")
-    # send command back and left
 
 
   def wheels_right_back_up(self):
@@ -33,6 +31,4 @@ class CarManeuvers(object):
     send_command(self.connection, "backward", "0.2")
     sleep(1)
     send_command(self.connection, "wheels left", "0.2")
-    # send_command(self.connection, "backward", "0.6")
-    #send command back and right
 
