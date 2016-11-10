@@ -5,13 +5,16 @@ import time
 os.chdir('/home/pi/Desktop')
 
 cam = p.PiCamera()
-cam.resolution = (320,240) 
+cam.resolution = (320,240)
+cam.hflip = True
+cam.vflip = True
 
 x = 0
-
-while x < 50:
-	#os.unlink('greg.jpg')
-	img = cam.capture('gregTest.jpg')
-	time.sleep(.25)
-	#oc.rename('gregTemp.jpg', 'greg.jpg')
+while x < 300:
+	img = cam.capture('tempGregTest.jpg')
+	os.unlink('gregTest.jpg')
+	os.rename('tempGregTest.jpg','gregTest.jpg')
+	time.sleep(.15)
 	x +=1
+
+exit()

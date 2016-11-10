@@ -9,10 +9,15 @@ def new_connection():
 
 def send_command(connection,command,time):
     connection.send('' + command + ' ; ' + time)
+    return receive_confirmation(connection)
 
 def receive_confirmation(connection):
   received = connection.recv(20)
   return received;
+
+def send_end_connection(connection):
+  connection.send('quit')
+  return
 
 # example:
 # con = new_conntection

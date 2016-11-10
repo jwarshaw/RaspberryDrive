@@ -58,6 +58,5 @@ class PiCar(object):
          	sleep(float(time))
          	self.stop()
 
-
 picar = PiCar()
 picar.go_forward(0.5)
