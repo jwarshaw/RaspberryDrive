@@ -11,19 +11,21 @@ class CarManeuvers(object):
 
   def right(self):
     print "executing right"
-    send_command(self.connection, "right", "0.5")
+    send_command(self.connection, "right", "9.85")
 
   def left(self):
     print "executing left"
-    send_command(self.connection, "left", "0.5")
+    send_command(self.connection, "left", "0.85")
 
   def back_up_then_right(self):
     print "executing back up and drive right"
-    send_command(self.connection, "backward", "0.75")
-    # send_command(self.connection, "right", "0.5")
+    send_command(self.connection, "left", "0.1")
+    send_command(self.connection, "backward", "0.6")
+
 
   def back_up_then_left(self):
     print "executing back up and drive left"
-    send_command(self.connection, "backward", "0.75")
-    # send_command(self.connection, "left", "0.5")
+    send_command(self.connection, "right", "0.1")
+    send_command(self.connection, "backward", "0.6")
+    #
 
