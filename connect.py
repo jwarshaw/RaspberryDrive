@@ -4,8 +4,21 @@ def new_connection():
     host = '192.168.2.4'
     port = 9000
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((host, port))
-    return s;
+    try:
+      s.connect((host, port))
+      return s
+    except Exception as e:
+      print("Server not ready to connect")
+
+def try_connection():
+    host = '192.168.2.4'
+    port = 9000
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    
+      s.connect((host, port))
+    except Exception as e:
+      print("something's wrong with ")
+
 
 def send_command(connection,command,time):
     connection.send('' + command + ' ; ' + time)
