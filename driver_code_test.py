@@ -25,8 +25,8 @@ def detect_stop_sign(image):
   return False
 
 # image = Image('images/0.jpg')
-x = 0
-while (x < 20):
+x = 86
+while (x < 100):
   print x
   image = Image('images/'+ str(x) + '.jpg')
   segmented_black_white = image.stretch(170,171)
