@@ -10,9 +10,15 @@ class AnalyzeImage(object):
   def __init__(self, image_path,connection):
     self.default_command = "stop"
     self.scvImg = SimpleCV.Image(image_path)
+    #adding in stop sign logic to check if speed slows down.
+    #reds = self.scImg.hueDistance(color=scv.Color.RED)
+    #red_stretched_image = reds.stretch(20,21)
+    #red_inverted_image = red_stretched_image.invert()
+    # self.red_blobs = red_inverted_image.findBlobs(minsize=3500)
     self.segmented_black_white = self.scvImg.stretch(180,181)
     self.black_white_blobs = self.segmented_black_white.findBlobs(minsize=100)
     self.car = CarManeuvers(connection)
+
 
   def runBlobFinder(self):
     if (self.black_white_blobs and (len(self.black_white_blobs) > 0)):
@@ -37,20 +43,33 @@ class AnalyzeImage(object):
       analyzed_blob = AnalyzeBlob(self.scvImg,blob)
 
       if analyzed_blob.isBlobBlocking():
-        print "true"
-        if analyzed_blob.isBlobBlockingMoreRight():
+        print "Blob blocks path"
+        if analyzeblob.isPocketOnLeft():
+          print "Pocket Left"
+          self.car.wheels_left_back_up()
+          self.car.right()
+        elif analyzeblob.isPocketOnRight():
+          print "Pocket right"
+          self.car.wheels_right_back_up()
+          self.car.left()
+        elif analyzed_blob.isBlobBlockingMoreRight():
+          print "On Right"
           self.car.wheels_right_back_up()
         else:
+          print "On Left"
           self.car.wheels_left_back_up()
         return
 
       elif analyzed_blob.isBlobDetectedOnRight():
+        print "Small blob on right"
         # if analyzed_blob.blockedOnRight():
         self.car.left()
         return
       elif analyzed_blob.isBlobDetectedOnLeft():
+        print "Small blob on left"
         self.car.right()
         return
+    print "No Blobs in way"
     #otherwise go forward
     self.car.forward()
 

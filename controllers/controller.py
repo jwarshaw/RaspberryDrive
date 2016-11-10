@@ -43,7 +43,6 @@ def run(server):
   count = 0
   while (count < 100):
     print count
-    instruction = "forward"
     #retrieve image.
     get_image(count)
     image_path = os.getcwd() + "/images/" + str(count) + ".jpg"
@@ -51,7 +50,7 @@ def run(server):
       #Blog Detection
       analyzed_image = AnalyzeImage(image_path, server)
       analyzed_image.runBlobFinder()
-      sleep(0.45)
+      sleep(0.7)
     count += 1
 
 server = start_all()

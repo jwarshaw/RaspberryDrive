@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 from time import sleep
 
 class PiCar(object):
-		
+
 	def __init__(self):
 		GPIO.setmode(GPIO.BOARD)
         	self.pins = {'left'     : 18,
@@ -37,6 +37,18 @@ class PiCar(object):
          	sleep(float(time))
          	self.stop()
 
+    def turn_wheels_left(self, time):
+        self.stop()
+        GPIO.output(self.pins['left'],1)
+        sleep(float(time))
+        self.stop()
+
+    def turn_wheels_right(self, time):
+        self.stop()
+        GPIO.output(self.pins['right'],1)
+        sleep(float(time))
+        self.stop()
+
 	def go_forward_left(self,time):
 		self.stop()
          	GPIO.output(self.pins['left'],1)
@@ -44,14 +56,14 @@ class PiCar(object):
          	sleep(float(time))
         	self.stop()
 
-	def go_backward_right(self,time):
+	def go_backward_wheels_right(self,time):
          	self.stop()
          	GPIO.output(self.pins['right'],1)
          	GPIO.output(self.pins['backward'],1)
          	sleep(float(time))
          	self.stop()
 
-	def go_backward_left(self,time):
+	def go_backward_wheels_left(self,time):
          	self.stop()
          	GPIO.output(self.pins['left'],1)
          	GPIO.output(self.pins['backward'],1)

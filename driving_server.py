@@ -13,7 +13,7 @@ def createPiReceiver():
     print "accepted connection from " + str(address)
     while(1):
     	transfer = clientsocket.recv(20)
-    	if not transfer: break 
+    	if not transfer: break
     	if (transfer == "quit"):
     		exit()
 	else:
@@ -34,9 +34,13 @@ def inputParser(command,number,car):
 	elif command == "left":
 		car.go_forward_left(number)
 	elif command == "backward right":
-		car.go_backward_left(number)
-	elif command == "backward left":
-		car.go_backward_right(number)
+    car.go_backward_wheels_right(number)
+  elif command == "backward left":
+		car.go_backward_wheels_left(number)
+  elif command == "wheels right":
+    car.turn_wheels_right(number)
+  elif command == "wheels left":
+    car.turn_wheels_left(number)
 	else:
 		car.stop()
 
