@@ -39,9 +39,9 @@ class AnalyzeImage(object):
       if analyzed_blob.isBlobBlocking():
         print "true"
         if analyzed_blob.isBlobBlockingMoreRight():
-          self.car.back_up_then_left()
+          self.car.wheels_right_back_up()
         else:
-          self.car.back_up_then_right()
+          self.car.wheels_left_back_up()
         return
 
       elif analyzed_blob.isBlobDetectedOnRight():

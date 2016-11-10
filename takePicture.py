@@ -14,7 +14,7 @@ while x < 160:
 	img = cam.capture('tempGregTest.jpg')
 	os.unlink('gregTest.jpg')
 	os.rename('tempGregTest.jpg','gregTest.jpg')
-	time.sleep(.25)
+	time.sleep(.15)
 	x +=1
 
 exit()
