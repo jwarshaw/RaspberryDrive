@@ -12,8 +12,9 @@ def createPiReceiver():
     (clientsocket, address) = serversocket.accept()
 		print "accepted connection from " + str(address)
 		while(1):
-      transfer = clientsocket.recv(20)
-			if not transfer: break
+        		transfer = clientsocket.recv(20)
+			if not transfer: break 
+
 			if (transfer == "quit"):
 				exit()
 			else:
