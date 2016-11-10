@@ -30,7 +30,7 @@ class AnalyzeBlob(object):
 		return (self.blob.maxX() > self.img.size()[0] * 0.95) and (self.blob.width() > self.img.size()[0] * 0.5) and (self.blob.maxY() < self.img.size()[1] * 0.8)
 
 	def isBlobBlockingMoreRight(self):
-		self.blob.angle() > 0
+		return self.blob.angle() > 0
 
 	def __anglingFromLeft(self):
 		print self.blob.angle()
