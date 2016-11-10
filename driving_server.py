@@ -12,16 +12,16 @@ def createPiReceiver():
         	(clientsocket, address) = serversocket.accept()
 		print "accepted connection from " + str(address)
 		while(1):
-        		transfer = clientsocket.recv(20).split(';')
+        		transfer = clientsocket.recv(20)
 			if not transfer: break 
-			if transfer == ['']: break	
-			print "received: " + transfer
-			try:
-				inputParser(transfer[0].strip(),float(transfer[1]),new_picar)
-				clientsocket.send("true")
-			except Exception:
-				clientsocket.send("false")
-			continue
+			if (transfer == "quit"):
+				exit()
+			else:
+				transfer = transfer.split(';')
+			if transfer == ['']: break
+			print "received: " + str(transfer)
+			inputParser(transfer[0].strip(),float(transfer[1]),new_picar)
+			clientsocket.send("true")
 				
 
 def inputParser(command,number,car):
@@ -43,3 +43,4 @@ def inputParser(command,number,car):
 
 
 createPiReceiver()
+exit()

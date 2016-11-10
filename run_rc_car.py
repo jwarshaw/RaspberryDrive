@@ -5,8 +5,8 @@ class PiCar(object):
 		
 	def __init__(self):
 		GPIO.setmode(GPIO.BOARD)
-        	self.pins = {'left'     : 11,
-                	     'right'    : 18,
+        	self.pins = {'left'     : 18,
+                	     'right'    : 11,
                 	     'forward'  : 16,
                      	     'backward' : 12 }
         	for pin_number in self.pins.itervalues():
@@ -21,43 +21,43 @@ class PiCar(object):
      	def go_forward(self,time):
         	self.stop()
          	GPIO.output(self.pins['forward'],1)
-         	sleep(int(time))
+         	sleep(float(time))
          	self.stop()
 
 	def go_backward(self,time):
         	self.stop()
          	GPIO.output(self.pins['backward'],1)
-         	sleep(int(time))
+         	sleep(float(time))
          	self.stop()
 
      	def go_forward_right(self,time):
         	self.stop()
          	GPIO.output(self.pins['right'],1)
          	GPIO.output(self.pins['forward'],1)
-         	sleep(int(time))
+         	sleep(float(time))
          	self.stop()
 
 	def go_forward_left(self,time):
 		self.stop()
          	GPIO.output(self.pins['left'],1)
          	GPIO.output(self.pins['forward'],1)
-         	sleep(int(time))
+         	sleep(float(time))
         	self.stop()
 
 	def go_backward_right(self,time):
          	self.stop()
          	GPIO.output(self.pins['right'],1)
          	GPIO.output(self.pins['backward'],1)
-         	sleep(int(time))
+         	sleep(float(time))
          	self.stop()
 
 	def go_backward_left(self,time):
          	self.stop()
          	GPIO.output(self.pins['left'],1)
          	GPIO.output(self.pins['backward'],1)
-         	sleep(int(time))
+         	sleep(float(time))
          	self.stop()
 
 
 picar = PiCar()
-
+picar.go_forward(0.5)
