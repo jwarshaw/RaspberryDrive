@@ -44,7 +44,15 @@ class AnalyzeImage(object):
 
       if analyzed_blob.isBlobBlocking():
         print "Blob blocks path"
-        if analyzed_blob.isBlobBlockingMoreRight():
+        if analyzeblob.isPocketOnLeft():
+          print "Pocket Left"
+          self.car.wheels_left_back_up()
+          self.car.right()
+        elif analyzeblob.isPocketOnRight():
+          print "Pocket right"
+          self.car.wheels_right_back_up()
+          self.car.left()
+        elif analyzed_blob.isBlobBlockingMoreRight():
           print "On Right"
           self.car.wheels_right_back_up()
         else:

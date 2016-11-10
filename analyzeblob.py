@@ -49,6 +49,12 @@ class AnalyzeBlob(object):
 	def __largeObjectStartingNearRight(self):
 		return (self.blob.maxX() > self.img.size()[0] * 0.80) and (self.blob.width() > self.img.size()[0] * 0.5) and (self.blob.maxY() < self.img.size()[1] * 0.8)
 
+	def isPocketOnRight(self):
+		return (self.blob.width() > self.image.size()[0] * 0.8 ) and (self.blob.height() > self.image.size()[0] * 0.8) and (self.blob.maxY() > self.img.size()[1] * 0.5)
+
+	def isPocketOnLeft(self):
+		return (self.blob.width() > self.image.size()[0] * 0.8 ) and (self.blob.height() > self.image.size()[0] * 0.8) and (self.blob.maxY() < self.img.size()[1] * 0.5)
+
 	def isBlobBlockingMoreRight(self):
 		return self.blob.angle() > 0
 
