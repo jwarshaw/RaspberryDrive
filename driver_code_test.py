@@ -25,20 +25,26 @@ def detect_stop_sign(image):
   return False
 
 # image = Image('images/0.jpg')
-x = 0
-while (x < 20):
-  print x
-  image = Image('images/'+ str(x) + '.jpg')
-  segmented_black_white = image.stretch(170,171)
-  black_white_blobs = segmented_black_white.findBlobs(minsize=100)
-  print black_white_blobs
-  if black_white_blobs:
-      for blob in black_white_blobs:
-          blob.draw(color=(128,0,0))
-  segmented_black_white.show()
-  segmented_black_white.show()
-  time.sleep(3)
-  x +=1
+x = 18
+# while (x < 20):
+  # print x
+  # image = Image('images/'+ str(x) + '.jpg')
+image = Image('images/stop5.jpg')
+# segmented_black_white = image.stretch(180,181)
+# black_white_blobs = segmented_black_white.findBlobs(minsize=100)
+reds = image.hueDistance(color=scv.Color.RED)
+red_stretched_image = reds.stretch(20,21)
+red_inverted_image = red_stretched_image.invert()
+red_blobs = red_inverted_image.findBlobs(minsize=3500)
+# print red_blobs
+# if red_blobs:
+#     for blob in red_blobs:
+#         blob.draw(color=(128,0,0))
+# if red_blobs:
+red_inverted_image.show()
+red_inverted_image.show()
+time.sleep(10)
+x +=1
 
 exit()
 

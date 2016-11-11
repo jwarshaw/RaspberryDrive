@@ -11,17 +11,27 @@ class AnalyzeImage(object):
     self.default_command = "stop"
     self.scvImg = SimpleCV.Image(image_path)
     #adding in stop sign logic to check if speed slows down.
-    #reds = self.scImg.hueDistance(color=scv.Color.RED)
-    #red_stretched_image = reds.stretch(20,21)
-    #red_inverted_image = red_stretched_image.invert()
-    # self.red_blobs = red_inverted_image.findBlobs(minsize=3500)
+    self.reds = self.scvImg.hueDistance(color=SimpleCV.Color.RED)
+    self.red_stretched_image = self.reds.stretch(20,21)
+    self.red_inverted_image = self.red_stretched_image.invert()
+    self.red_blobs = self.red_inverted_image.findBlobs(minsize=4500, maxsize=10000)
+    #directional blob logic
     self.segmented_black_white = self.scvImg.stretch(180,181)
     self.black_white_blobs = self.segmented_black_white.findBlobs(minsize=100)
     self.car = CarManeuvers(connection)
 
+  def stopSign(self):
+    if ((self.red_blobs) and (len(self.red_blobs) > 0)):
+      return True
+    else:
+      return False
 
   def runBlobFinder(self):
-    if (self.black_white_blobs and (len(self.black_white_blobs) > 0)):
+    if self.stopSign():
+      print "STOP SIGN"
+      time.sleep(4)
+      return
+    if ((self.black_white_blobs) and (len(self.black_white_blobs) > 0)):
       self.analyzeBlobs()
     else:
       self.car.forward()
@@ -44,11 +54,11 @@ class AnalyzeImage(object):
 
       if analyzed_blob.isBlobBlocking():
         print "Blob blocks path"
-        if analyzeblob.isPocketOnLeft():
+        if analyzed_blob.isPocketOnLeft():
           print "Pocket Left"
           self.car.wheels_left_back_up()
           self.car.right()
-        elif analyzeblob.isPocketOnRight():
+        elif analyzed_blob.isPocketOnRight():
           print "Pocket right"
           self.car.wheels_right_back_up()
           self.car.left()
@@ -60,14 +70,14 @@ class AnalyzeImage(object):
           self.car.wheels_left_back_up()
         return
 
+      elif analyzed_blob.isBlobDetectedOnLeft():
+        print "Small blob on left"
+        self.car.right()
+        return
       elif analyzed_blob.isBlobDetectedOnRight():
         print "Small blob on right"
         # if analyzed_blob.blockedOnRight():
         self.car.left()
-        return
-      elif analyzed_blob.isBlobDetectedOnLeft():
-        print "Small blob on left"
-        self.car.right()
         return
     print "No Blobs in way"
     #otherwise go forward
