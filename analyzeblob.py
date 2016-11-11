@@ -32,16 +32,16 @@ class AnalyzeBlob(object):
 			return True
 
 	def __nearLineOnRight(self):
-		return (self.blob.height() > self.img.size()[1] * 0.90) and (self.blob.minX() > self.img.size()[0] * 0.7)
+		return (self.blob.height() > self.img.size()[1] * 0.90) and (self.blob.minX() > self.img.size()[0] * 0.6)
 
 	def __nearLineOnLeft(self):
-		return (self.blob.height() > self.img.size()[1] * 0.90) and (self.blob.maxX() < self.img.size()[0] * 0.3)
+		return (self.blob.height() > self.img.size()[1] * 0.90) and (self.blob.maxX() < self.img.size()[0] * 0.4)
 
 	def __veryNearBlobOnRight(self):
-		return (self.blob.height() > self.img.size()[1] * 0.40) and (self.blob.minX() > self.img.size()[0] * 0.6) and (self.blob.maxY() > self.img.size()[0] * 0.8)
+		return (self.blob.height() > self.img.size()[1] * 0.40) and (self.blob.minX() > self.img.size()[0] * 0.5) and (self.blob.maxY() > self.img.size()[0] * 0.8)
 
 	def __veryNearBlobOnLeft(self):
-		return (self.blob.height() > self.img.size()[1] * 0.40) and (self.blob.maxX() < self.img.size()[0] * 0.4) and (self.blob.height() > self.img.size()[0] * 0.8)
+		return (self.blob.height() > self.img.size()[1] * 0.40) and (self.blob.maxX() < self.img.size()[0] * 0.5) and (self.blob.height() > self.img.size()[0] * 0.8)
 
 	def __anglingFromRight(self):
 		return self.blob.angle() < self.angle_to_turn
@@ -50,10 +50,10 @@ class AnalyzeBlob(object):
 		return (self.blob.maxX() > self.img.size()[0] * 0.80) and (self.blob.width() > self.img.size()[0] * 0.5) and (self.blob.maxY() < self.img.size()[1] * 0.8)
 
 	def isPocketOnRight(self):
-		return (self.blob.width() > self.image.size()[0] * 0.8 ) and (self.blob.height() > self.image.size()[0] * 0.8) and (self.blob.maxY() > self.img.size()[1] * 0.5)
+		return (self.blob.width() > self.img.size()[0] * 0.8 ) and (self.blob.height() > self.img.size()[0] * 0.8) and (self.blob.maxY() > self.img.size()[1] * 0.5)
 
 	def isPocketOnLeft(self):
-		return (self.blob.width() > self.image.size()[0] * 0.8 ) and (self.blob.height() > self.image.size()[0] * 0.8) and (self.blob.maxY() < self.img.size()[1] * 0.5)
+		return (self.blob.width() > self.img.size()[0] * 0.8 ) and (self.blob.height() > self.img.size()[0] * 0.8) and (self.blob.maxY() < self.img.size()[1] * 0.5)
 
 	def isBlobBlockingMoreRight(self):
 		return self.blob.angle() > 0
