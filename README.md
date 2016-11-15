@@ -15,7 +15,10 @@ The car sends a picture to the server. The server then analyzes and sends the co
 - Greg Garner
 - Henry Fyfe
 - Will Farrell
-- John Warshaw
+- Jonathan Warshaw
+
+### Video
+https://youtu.be/3zaptrMLBws
 
 ### License
 Raspberry Drive is released under the [MIT License](https://opensource.org/licenses/MIT)
